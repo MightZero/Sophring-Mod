@@ -1,0 +1,12 @@
+{
+	"required": true,
+	"package": "com.mightzero.sophring.mixin",
+	"compatibilityLevel": "JAVA_17",
+	"mixins": [
+		"LivingEntityMixin",
+		"AnvilScreenHandlerMixin"
+	],
+	"injectors": {
+		"defaultRequire": 1
+	}
+}
