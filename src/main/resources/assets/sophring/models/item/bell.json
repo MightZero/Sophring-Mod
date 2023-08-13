@@ -1,11 +1,11 @@
 {
 	"credit": "Made with Blockbench",
 	"textures": {
-		"1": "sophring:item/texture1",
-		"2": "sophring:item/texture2",
-		"3": "sophring:item/texture3",
-		"4": "sophring:item/texture4",
-		"5": "sophring:item/texture5"
+		"1": "sophring:item/bell_1",
+		"2": "sophring:item/bell_2",
+		"3": "sophring:item/bell_3",
+		"4": "sophring:item/bell_4",
+		"5": "sophring:item/bell_5"
 	},
 	"elements": [
 		{

@@ -20,6 +20,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import com.mightzero.sophring.item.Bell;
+import com.mightzero.sophring.item.IcyCrystal;
 
 public class Sophring implements ModInitializer ,ClientModInitializer{
 	public void log(String msg)
@@ -29,8 +30,9 @@ public class Sophring implements ModInitializer ,ClientModInitializer{
 	// This logger is used to write text to the console and the log file.
 	// It is considered best practice to use your mod id as the logger's name.
 	// That way, it's clear which mod wrote info, warnings, and errors.
-    public static final Logger LOGGER = LoggerFactory.getLogger("sophring");
+	public static final Logger LOGGER = LoggerFactory.getLogger("sophring");
 	public static final Item Bell= new Bell(new FabricItemSettings().maxDamage(101).rarity(Rarity.EPIC));
+	public static final Item IcyCrystal= new IcyCrystal(new FabricItemSettings().rarity(Rarity.RARE));
 	@Override
 	public void onInitialize() {
 		// This code runs as soon as Minecraft is in a mod-load-ready state.
@@ -38,6 +40,7 @@ public class Sophring implements ModInitializer ,ClientModInitializer{
 		// Proceed with mild caution.
 		log("Welcome to Use Sophring Mod by MightZero");
 		Registry.register(Registries.ITEM, new Identifier("sophring", "bell"), Bell);
+		Registry.register(Registries.ITEM, new Identifier("sophring", "icy_crystal"), IcyCrystal);
 		ItemGroupEvents.modifyEntriesEvent(ItemGroups.COMBAT).register(content -> {
 			content.addAfter(Items.TOTEM_OF_UNDYING, Bell);
 		});
@@ -48,7 +51,6 @@ public class Sophring implements ModInitializer ,ClientModInitializer{
 		});
 		log("Sophring Mod is Loaded");
 	}
-
 	@Override
 	public void onInitializeClient() {
 

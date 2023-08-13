@@ -31,7 +31,7 @@ public abstract class AnvilScreenHandlerMixin extends ForgingScreenHandler {
         if (inputStack.getItem() == Sophring.Bell ) {
             this.levelCost.set(1);
             inputStack.setRepairCost(0);
-            if(materialStack.getItem() == Items.BLUE_ICE && inputStack.getDamage()>0) {
+            if(materialStack.getItem() == Sophring.IcyCrystal && inputStack.getDamage()>0) {
                 this.repairItemUsage=1;
                 ItemStack resultStack = inputStack.copy();
                 resultStack.setDamage(0);

@@ -15,7 +15,8 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 
 import java.util.List;
-
+import com.mightzero.sophring.item.IcyCrystal;
+import com.mightzero.sophring.Sophring;
 public class Bell extends Item implements Equipment {
     public Bell(Settings settings) {
         super(settings);
@@ -23,28 +24,31 @@ public class Bell extends Item implements Equipment {
     }
     @Override
     public boolean canRepair(ItemStack stack, ItemStack ingredient) {
-        return ingredient.isOf(Items.BLUE_ICE);
+        return ingredient.isOf(Sophring.IcyCrystal);
     }
     public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
         return this.equipAndSwap(this, world, user, hand);
     }
+    @Override
     public EquipmentSlot getSlotType() {
         return EquipmentSlot.FEET;
     }
+    @Override
     public boolean isDamageable() {
         return true;
     }
+    @Override
     public boolean damage(DamageSource source){return false;}
     @Override
     public boolean isEnchantable(ItemStack stack) {
         return false;
     }
+    @Override
     public void appendTooltip(ItemStack itemStack, World world, List<Text> tooltip, TooltipContext tooltipContext) {
-        // 默认为白色文本
         tooltip.add(Text.translatable("item.sophring.bell_tooltip_1"));
         tooltip.add(Text.translatable("item.sophring.bell_tooltip_2"));
         tooltip.add(Text.translatable("item.sophring.bell_tooltip_3"));
         if(itemStack.getDamage()>=100)
-        tooltip.add(Text.translatable("item.sophring.bell_tooltip_repair").formatted(Formatting.RED));
+            tooltip.add(Text.translatable("item.sophring.bell_tooltip_repair").formatted(Formatting.RED));
     }
 }
