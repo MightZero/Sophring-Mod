@@ -15,7 +15,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 
 import java.util.List;
-import com.mightzero.sophring.item.IcyCrystal;
+
 import com.mightzero.sophring.Sophring;
 public class Bell extends Item implements Equipment {
     public Bell(Settings settings) {
@@ -24,7 +24,7 @@ public class Bell extends Item implements Equipment {
     }
     @Override
     public boolean canRepair(ItemStack stack, ItemStack ingredient) {
-        return ingredient.isOf(Sophring.IcyCrystal);
+        return ingredient.isOf(Sophring.Vigour);
     }
     public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
         return this.equipAndSwap(this, world, user, hand);
