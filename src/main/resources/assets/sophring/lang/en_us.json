@@ -1,8 +1,14 @@
 {
   "item.sophring.bell": "Sophring Bell",
-  "item.sophring.bell_tooltip_1": "it is actually imbued with the profound love of the one who",
+  "item.sophring.bell_tooltip_1": "It is actually imbued with the profound love of the one who",
   "item.sophring.bell_tooltip_2":"ties the bell and the secret spell of the Sophring family.",
   "item.sophring.bell_tooltip_3":"The bell can protect the bearer from a lethal attack once.",
-  "item.sophring.bell_tooltip_repair":"Need to reinject vigour",
-  "item.sophring.icy_crystal":"Vigour"
+  "item.sophring.bell_tooltip_repair":"Need reinjecting vigour",
+  "item.sophring.vigour":"Vigour",
+  "item.sophring.icy_crystal":"Icy Crystal",
+  "item.sophring.key":"Dream Regress Key",
+
+  "itemGroup.tutorial.sophring_item": "Sophring | Item",
+
+  "effect.sophring.warm_dream": "Warm Dream"
 }

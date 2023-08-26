@@ -1,11 +1,8 @@
 package com.mightzero.sophring.mixin;
-import com.mightzero.sophring.EquippedStackAccessor;
-import com.mightzero.sophring.Sophring;
-import net.minecraft.SharedConstants;
+import com.mightzero.sophring.SophringItems;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.screen.*;
 import net.minecraft.item.ItemStack;
-import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
@@ -19,20 +16,18 @@ import net.minecraft.item.Items;
 public abstract class AnvilScreenHandlerMixin extends ForgingScreenHandler {
     @Shadow @Final private Property levelCost;
 
-    @Shadow private int repairItemUsage;
-
-    public AnvilScreenHandlerMixin(@Nullable ScreenHandlerType<?> type, int syncId, PlayerInventory playerInventory, ScreenHandlerContext context){
+    public AnvilScreenHandlerMixin(@Nullable ScreenHandlerType<?> type, int syncId, PlayerInventory playerInventory, ScreenHandlerContext context) {
         super(type, syncId, playerInventory, context);
     }
+
     @Inject(method = "updateResult", at = @At("HEAD"), cancellable = true)
     private void onUpdateResult(CallbackInfo ci) {
         ItemStack inputStack = this.input.getStack(0);
         ItemStack materialStack = this.input.getStack(1);
-        if (inputStack.getItem() == Sophring.Bell ) {
+        if (inputStack.getItem() == SophringItems.Bell ) {
             this.levelCost.set(1);
             inputStack.setRepairCost(0);
-            if(materialStack.getItem() == Sophring.Vigour && inputStack.getDamage()>0) {
-                this.repairItemUsage=1;
+            if(materialStack.getItem() == SophringItems.Vigour && inputStack.getDamage()>0) {
                 ItemStack resultStack = inputStack.copy();
                 resultStack.setDamage(0);
                 this.output.setStack(0, resultStack);
@@ -49,7 +44,7 @@ public abstract class AnvilScreenHandlerMixin extends ForgingScreenHandler {
     }
     @Inject(method = "setNewItemName", at = @At("HEAD"), cancellable = true)
     public void setNewItemName(String newItemName,CallbackInfoReturnable<Boolean> callback) {
-        if(this.input.getStack(0).getItem()== Sophring.Bell)callback.setReturnValue(false);
+        if(this.input.getStack(0).getItem()== SophringItems.Bell)callback.setReturnValue(false);
     }
 }
 

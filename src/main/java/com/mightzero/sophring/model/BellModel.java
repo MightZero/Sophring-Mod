@@ -2,18 +2,13 @@
 // Exported for Minecraft version 1.17 or later with Mojang mappings
 // Paste this class into your mod and generate all required imports
 
-package com.mightzero.sophring.item;
+package com.mightzero.sophring.model;
 
-import com.mightzero.sophring.Sophring;
-import net.minecraft.client.model.ModelPart;
 import net.minecraft.client.render.VertexConsumer;
 import net.minecraft.client.render.entity.model.EntityModel;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.client.model.*;
-import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.passive.AnimalEntity;
-import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.util.math.MathHelper;
 
 public class BellModel extends EntityModel<LivingEntity> {
@@ -37,7 +32,7 @@ public class BellModel extends EntityModel<LivingEntity> {
 	}
 	@Override
 	public void setAngles(LivingEntity entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
-		if(entity.isSneaking())
+		if(entity.isInSneakingPose())
 		{
 			this.main.pivotZ = 4.0F;
 			this.main.pivotY = 12.2F;

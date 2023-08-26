@@ -4,5 +4,11 @@
   "item.sophring.bell_tooltip_2":"的秘法咒语为媒介绑定在受铃人身上的魔法物件。",
   "item.sophring.bell_tooltip_3":"铃铛在普通外力作用下牢不可破，可以为受铃人抵挡一次致命攻击。",
   "item.sophring.bell_tooltip_repair":"需要重新注入血气",
-  "item.sophring.vigour":"血气"
+  "item.sophring.vigour":"血气",
+  "item.sophring.icy_crystal":"冰霜水晶",
+  "item.sophring.key":"归梦钥",
+
+  "itemGroup.tutorial.sophring_item": "十泉 | 物品",
+
+  "effect.sophring.warm_dream": "温愈之梦"
 }
