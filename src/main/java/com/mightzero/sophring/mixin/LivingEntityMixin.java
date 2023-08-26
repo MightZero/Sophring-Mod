@@ -10,6 +10,7 @@ import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.math.Box;
 import net.minecraft.world.World;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
@@ -17,6 +18,8 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import org.spongepowered.asm.mixin.Shadow;
+
+import java.util.function.Predicate;
 
 
 @Mixin(LivingEntity.class)
@@ -103,7 +106,21 @@ public abstract class LivingEntityMixin extends Entity implements EquippedStackA
                 if (e.getHealth() < e.getMaxHealth() / 2) {
                     if (sneak_count >= 3) {
                         if (necklace.getItem() == SophringItems.Key) {
-                            e.addStatusEffect(new StatusEffectInstance(SophringEffects.WARM_DREAM, 1200, 0));
+                            double range = 20.0; // 范围
+                            Box area = e.getBoundingBox().expand(range, range, range);
+                            Predicate<LivingEntity> entityFilter = targetEntity -> {
+                                // 在这里可以添加任何过滤逻辑，返回 true 表示实体符合条件，应被获取
+                                return targetEntity.getHealth() > 0; // 例如：仅获取生命值大于 0 的实体
+                            };
+
+                            // 获取范围内的所有实体
+                            e.getWorld().getEntitiesByClass(LivingEntity.class, area, entityFilter)
+                                    .forEach(targetEntity -> {
+                                        // 为生物添加再生效果
+                                        targetEntity.addStatusEffect(new StatusEffectInstance(SophringEffects.WARM_DREAM, 1200, 0));
+                                    });
+                            e.addStatusEffect(new StatusEffectInstance(SophringEffects.WARM_DREAM, 2400, 0));
+                            e.addStatusEffect(new StatusEffectInstance(StatusEffects.WITHER, 6000, 2));
                             necklace.setCount(0);
                         }
                         sneak_count = 0;
