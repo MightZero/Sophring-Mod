@@ -30,7 +30,7 @@ public abstract class SophringItems {
         try {
             Registry.register(Registries.ITEM_GROUP, Sophring_Item_Group, FabricItemGroup.builder()
                     .icon(() -> new ItemStack(Icy_Crystal))
-                    .displayName(Text.translatable("itemGroup.tutorial.sophring_item"))
+                    .displayName(Text.translatable("itemGroup.sophring_item"))
                     .build());
             Registry.register(Registries.ITEM, new Identifier(Sophring.MODID,"icy_crystal"),Icy_Crystal);
             Registry.register(Registries.ITEM, new Identifier(Sophring.MODID, "bell"), Bell);
